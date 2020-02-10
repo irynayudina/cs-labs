@@ -6,10 +6,15 @@ namespace lab1csVar5
     {
         public static void GetPosition(ref int  m, ref int n)
         {
-            Console.Write("Введите позицию ладьи по горизонтали: ");
-            m = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите позицию фигуры по горизонтали: ");
+            m = Convert.ToInt32(Console.ReadLine())-1;
             Console.Write("по вертикали: ");
-            n = Convert.ToInt32(Console.ReadLine());
+            n = Convert.ToInt32(Console.ReadLine())-1;
+        }
+        public static Char GetFigure()
+        {
+            Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");
+            return Char.Parse(Console.ReadLine());
         }
         public static void PrintChess(Char [,] chess)
         {
@@ -26,7 +31,6 @@ namespace lab1csVar5
         {
             for (int s = 0; s < chess.GetLength(0); s++)
             {
-                //chess[s] = new String[8];
                 for (int f = 0; f < chess.GetLength(1); f++)
                 {
                     chess[s,f] = '1';
@@ -39,17 +43,43 @@ namespace lab1csVar5
             {
                 for (int t = 0; t < chess.GetLength(1); t++)
                 {
-                    if (i == (m - 1))
+                    if (i == m)
                     {
                         chess[i,t] = '*';
                     }
-                    if (t == (n - 1))
+                    if (t == n)
                     {
                         chess[i,t] = '*';
                     }
                 }
             }
-            chess[(m - 1),(n - 1)] = 's';
+            chess[m,n] = 'L';
+        }
+        public static void PlaceTheSlon(Char[,] chess, int m, int n)
+        {
+            int i = 0;
+            while(i<chess.GetLength(0))
+            {
+                if ((m - i) >= 0 && (n + i) <= 7)
+                {
+                    chess[m - i, n + i] = '*';
+                }
+                if ((m + i) <=7 && (n - i) >= 0)
+                {
+                    chess[m + i, n - i] = '*';
+                }
+                if((m-i) >=0 && (n - i) >= 0)
+                {
+                    chess[m - i, n - i] = '*';
+                }
+                if((m+i) <=7 && (n + i) <= 7)
+                {
+                    chess[m + i, n + i] = '*';
+                }
+                
+                i++;
+            }
+            chess[m, n] = 'S';
         }
         static void Main(string[] args)
         {
@@ -57,7 +87,14 @@ namespace lab1csVar5
             Char[,] chess = new Char[8,8];
             MakeChessDesk(chess);
             GetPosition(ref m, ref n);
-            PlaceTheRook(chess, m, n);
+            if (GetFigure() == 'L')
+            {
+                PlaceTheRook(chess, m, n);
+            }
+            else
+            {
+                PlaceTheSlon(chess, m, n);
+            }
             PrintChess(chess);           
         }
     }
