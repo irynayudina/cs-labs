@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\repos\\lab1csVar5\\lab1csVar5.csproj",
+      "projectUniqueName": "D:\\gitlocal\\progLabs\\sharp\\lab1csVar5\\lab1csVar5.csproj",
       "projectName": "lab1csVar5",
-      "projectPath": "D:\\source\\repos\\lab1csVar5\\lab1csVar5.csproj",
+      "projectPath": "D:\\gitlocal\\progLabs\\sharp\\lab1csVar5\\lab1csVar5.csproj",
       "packagesPath": "C:\\Users\\Ирина\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\repos\\lab1csVar5\\obj\\",
+      "outputPath": "D:\\gitlocal\\progLabs\\sharp\\lab1csVar5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

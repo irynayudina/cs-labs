@@ -20,3 +20,14 @@ D:\source\repos\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.runtimeconfig.json
 D:\source\repos\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.runtimeconfig.dev.json
 D:\source\repos\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.dll
 D:\source\repos\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.pdb
+D:\gitlocal\progLabs\sharp\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.deps.json
+D:\gitlocal\progLabs\sharp\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.runtimeconfig.json
+D:\gitlocal\progLabs\sharp\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.runtimeconfig.dev.json
+D:\gitlocal\progLabs\sharp\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.dll
+D:\gitlocal\progLabs\sharp\lab1csVar5\bin\Debug\netcoreapp2.1\lab1csVar5.pdb
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.csprojAssemblyReference.cache
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.csproj.CoreCompileInputs.cache
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.AssemblyInfoInputs.cache
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.AssemblyInfo.cs
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.dll
+D:\gitlocal\progLabs\sharp\lab1csVar5\obj\Debug\netcoreapp2.1\lab1csVar5.pdb

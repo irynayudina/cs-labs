@@ -6,15 +6,45 @@ namespace lab1csVar5
     {
         public static void GetPosition(ref int  m, ref int n)
         {
+        A:
             Console.Write("Введите позицию фигуры по горизонтали: ");
-            m = Convert.ToInt32(Console.ReadLine())-1;
+            String tmp = Console.ReadLine();
+            while(!(int.TryParse(tmp, out m)))
+            {
+                Console.Write("Введите позицию фигуры по горизонтали: ");
+                tmp = Console.ReadLine();
+            }
+            m = Convert.ToInt32(tmp) - 1;
+            if (m < 0 || m > 7)
+            {
+                goto A;
+            }
+        B:
             Console.Write("по вертикали: ");
-            n = Convert.ToInt32(Console.ReadLine())-1;
+            String tmp1 = Console.ReadLine();
+            while (!(int.TryParse(tmp1, out n)))
+            {
+                Console.Write("по вертикали: ");
+                tmp1 = Console.ReadLine();
+            }
+            n = Convert.ToInt32(tmp1) - 1;
+            if (n < 0 || n > 7)
+            {
+                goto B;
+            }
         }
         public static Char GetFigure()
         {
             Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");
-            return Char.Parse(Console.ReadLine());
+            Char tmp = Char.Parse(Console.ReadLine());
+            
+            while (!tmp.Equals('S') && !tmp.Equals('L'))
+            {
+                Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");
+                tmp = Char.Parse(Console.ReadLine());
+            }        
+            
+            return tmp;
         }
         public static void PrintChess(Char [,] chess)
         {
