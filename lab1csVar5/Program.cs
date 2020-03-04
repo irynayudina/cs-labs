@@ -1,7 +1,8 @@
 ﻿using System;
 
 namespace lab1csVar5
-{
+{ //Chess game
+
     class Program
     {
         public static void GetPosition(ref int  m, ref int n)
@@ -35,9 +36,13 @@ namespace lab1csVar5
         }
         public static Char GetFigure()
         {
-            Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");
-            Char tmp = Char.Parse(Console.ReadLine());
-            
+            Char tmp = 'S';
+            while (!Char.TryParse(Console.ReadLine(), out tmp))
+            {
+                Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");  
+            }
+            tmp = Char.Parse(Console.ReadLine());
+
             while (!tmp.Equals('S') && !tmp.Equals('L'))
             {
                 Console.WriteLine("Выберите фигуру слон 'S' или ладья 'L'");
