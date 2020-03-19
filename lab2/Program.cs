@@ -62,15 +62,51 @@ namespace lab2
 class Program
 {
     static void Main(string[] args)
-    {
-           
+        {
+
             Person human = new Person();
             Console.WriteLine(human.ToString());
             human.ChangeBirthday = 1999;
             Console.WriteLine(human.ToString());
+            int m, n;
+            m = EnterPositiveInt();
+            n = EnterPositiveInt();
+            int[] arr1dimention = new int[m * n];
+            int[,] arr2dimention = new int[m,n];
+            int[][] arrStepped = new int[m][];
+            Random rand = new Random();
+            for (int i =0; i<arrStepped.Length; i++)
+            {
+                int sum = m * n - m;
+                int sumremain = sum;
+                for (int k=0; k<i; k++)
+                {
+                    sumremain = sumremain - arrStepped[k].Length - 1;
+                    if (sumremain < 0)
+                    {
+                        sumremain = 0;
+                    }
+                }
+                int r = sumremain > 0 ? rand.Next(1, sumremain) : 0;
+                arrStepped[i] = new int[1 + r];
+                arrStepped[arrStepped.Length - 1] = new int[1 + sumremain];
+            }
 
         }
-}
+
+        private static int EnterPositiveInt()
+        {
+            int m = -1;
+            string tmp = Console.ReadLine();
+            while (!(int.TryParse(tmp, out m)) || m<1)
+            {
+                Console.Write("Введите целое положительное число ");
+                tmp = Console.ReadLine();
+            }
+
+            return m;
+        }
+    }
 }
 
 
