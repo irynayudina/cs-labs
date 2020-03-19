@@ -72,26 +72,34 @@ class Program
             m = EnterPositiveInt();
             n = EnterPositiveInt();
             int[] arr1dimention = new int[m * n];
-            int[,] arr2dimention = new int[m,n];
+            int[,] arr2dimention = new int[m, n];
             int[][] arrStepped = new int[m][];
-            Random rand = new Random();
-            for (int i =0; i<arrStepped.Length; i++)
+            Create2dstepped(m, n, arrStepped);
+            for(int i =0; i<m; i++)
             {
-                int sum = m * n - m;
+                Console.WriteLine(arrStepped[i].Length);
+            }
+        }
+
+        private static void Create2dstepped(int m, int n, int[][] arrStepped)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < arrStepped.Length; i++)
+            {
+                int sum = m * n-1;
                 int sumremain = sum;
-                for (int k=0; k<i; k++)
+                for (int k = 0; k < i; k++)
                 {
-                    sumremain = sumremain - arrStepped[k].Length - 1;
+                    sumremain = sumremain - arrStepped[k].Length;
                     if (sumremain < 0)
                     {
                         sumremain = 0;
                     }
                 }
                 int r = sumremain > 0 ? rand.Next(1, sumremain) : 0;
-                arrStepped[i] = new int[1 + r];
-                arrStepped[arrStepped.Length - 1] = new int[1 + sumremain];
+                arrStepped[i] = new int[r];
+                arrStepped[arrStepped.Length - 1] = new int[1+sumremain];
             }
-
         }
 
         private static int EnterPositiveInt()
