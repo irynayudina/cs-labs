@@ -96,7 +96,7 @@ class Program
                         sumremain = 0;
                     }
                 }
-                int r = sumremain > 0 ? rand.Next(1, sumremain) : 0;
+                int r = sumremain > 0 ? rand.Next(1, sumremain/2) : 0;
                 arrStepped[i] = new int[r];
                 arrStepped[arrStepped.Length - 1] = new int[1+sumremain];
             }
