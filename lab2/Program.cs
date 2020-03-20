@@ -3,19 +3,22 @@ using System.Diagnostics;
 
 namespace lab2
 {
-    
 
-class Program
+    public enum FormOfStudy
+    {
+        FullTime,
+        PartTime,
+        Distance
+    }
+    class Program
 {
-        public enum FormOfStudy
-        {
-            FullTime,
-            PartTime,
-            Distance
-        }
+        
     static void Main(string[] args)
     {
             //for test {
+            GraduateStudent s = new GraduateStudent();
+            s.Student.Name = "x";
+            
             Article a = new Article();
             Console.WriteLine(a.ToString());
             Person human = new Person();
