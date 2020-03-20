@@ -1,87 +1,105 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace lab2
 {
-    public class Person
-    {
-        private string name;
-        private string lastName;
-        private DateTime birthday;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-        public DateTime Birthday
-        {
-            get { return birthday; }
-            set { birthday = value; }
-        }
-        //Additional unnecessary function
-        public int Age()
-        {
-            int bYear, nYear;
-            bYear = Birthday.Year;
-            nYear = DateTime.Today.Year;
-            return (nYear - bYear);
-        }
-        public int ChangeBirthday
-        {            
-            get { return Birthday.Year; }
-            set { Birthday = new DateTime(value, Birthday.Month, Birthday.Day); }
-        }
-        public Person(string name, string lastName, DateTime birthday)
-        {
-            Name = name;
-            LastName = lastName;
-            Birthday = birthday;
-        }
-        public Person()
-        {
-            Name = "Iryna";
-            LastName = "Yudina";
-            Birthday = new DateTime(2001, 01, 27);
-        }
-        override public string ToString()
-        {
-            return ($"Information about subject:\n Name: {this.Name}\n Last Name: {LastName}\n" +
-                $" Date of birthday: {Birthday}\n" +
-                $" Age: {((DateTime.Today).Subtract(Birthday)).Days/365} or {Age()}");
-        }
-        public virtual string ToShortString()
-        {
-            return ($"{Name} {LastName}");
-        }
-    }
+    
 
 class Program
 {
-    static void Main(string[] args)
+        public enum FormOfStudy
         {
-
+            FullTime,
+            PartTime,
+            Distance
+        }
+    static void Main(string[] args)
+    {
+            //for test {
+            Article a = new Article();
+            Console.WriteLine(a.ToString());
             Person human = new Person();
             Console.WriteLine(human.ToString());
             human.ChangeBirthday = 1999;
             Console.WriteLine(human.ToString());
+            // } for test
             int m, n;
-            m = EnterPositiveInt();
-            n = EnterPositiveInt();
-            int[] arr1dimention = new int[m * n];
-            int[,] arr2dimention = new int[m, n];
-            int[][] arrStepped = new int[m][];
+            Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
+            string inp = Console.ReadLine();
+            //safe entering
+            //m = EnterPositiveInt();
+            //n = EnterPositiveInt();
+            string[] mn = inp.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+            m = Convert.ToInt32(mn[0]);
+            n = Convert.ToInt32(mn[1]);
+            Person[] arr1dimention = new Person[m * n];
+            Person[,] arr2dimention = new Person[m, n];
+            Person[][] arrStepped = new Person[m][];
             Create2dstepped(m, n, arrStepped);
             for(int i =0; i<m; i++)
             {
-                Console.WriteLine(arrStepped[i].Length);
+                Console.WriteLine($"arrStepped[{i}][{arrStepped[i].Length}]");
             }
+
+            for(int i = 0; i < arr1dimention.Length; i++)
+            {
+                arr1dimention[i] = new Person();
+            }
+            for (int i = 0; i < m; i++)
+            {
+                for (int k = 0; k < n; k++)
+                {
+                    arr2dimention[i, k] = new Person();
+                }
+            }
+            for (int i = 0; i < m; i++)
+            {
+                for (int k = 0; k < arrStepped[i].Length; k++)
+                {
+                    arrStepped[i][k] = new Person();
+                }
+            }
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            for (int i = 0; i < arr1dimention.Length; i++)
+            {
+                arr1dimention[i].Name = "I";
+            }
+            stopWatch.Stop();
+            TimeSpan ts1d = stopWatch.Elapsed;
+            stopWatch.Start();
+            for (int i = 0; i < arr2dimention.GetLength(0); i++)
+            {
+                for (int k = 0; k < arr2dimention.GetLength(1); k++)
+                {
+                    arr2dimention[i, k].Name = "I";
+                }
+            }
+            stopWatch.Stop();
+            TimeSpan ts2d = stopWatch.Elapsed;
+            stopWatch.Start();
+            for (int i = 0; i < m; i++)
+            {
+                for (int k = 0; k < arrStepped[i].Length; k++)
+                {
+                    arrStepped[i][k].Name = "I";
+                }
+            }
+            stopWatch.Stop();
+            TimeSpan tss = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts1d.Hours, ts1d.Minutes, ts1d.Seconds,
+            ts1d.Milliseconds / 10);
+            Console.WriteLine("RunTime of 1 dimentional array " + ts1d);
+            Console.WriteLine("RunTime of 2 dimentional array " + ts2d);
+            Console.WriteLine("RunTimes of stepped array" + tss);
+            ////////////////////individual tasks variant 6
+            
+
         }
 
-        private static void Create2dstepped(int m, int n, int[][] arrStepped)
+        private static void Create2dstepped(int m, int n, Person[][] arrStepped)
         {
             Random rand = new Random();
             for (int i = 0; i < arrStepped.Length; i++)
@@ -97,11 +115,11 @@ class Program
                     }
                 }
                 int r = sumremain > 0 ? rand.Next(1, sumremain/2) : 0;
-                arrStepped[i] = new int[r];
-                arrStepped[arrStepped.Length - 1] = new int[1+sumremain];
+                arrStepped[i] = new Person[r];
+                arrStepped[arrStepped.Length - 1] = new Person[1+sumremain];
             }
         }
-
+        //unused function
         private static int EnterPositiveInt()
         {
             int m = -1;
@@ -114,7 +132,7 @@ class Program
 
             return m;
         }
-    }
+}
 }
 
 
