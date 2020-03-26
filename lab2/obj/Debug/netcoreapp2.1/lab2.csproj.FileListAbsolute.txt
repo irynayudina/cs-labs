@@ -9,3 +9,4 @@ D:\source\repos\lab2\obj\Debug\netcoreapp2.1\lab2.AssemblyInfoInputs.cache
 D:\source\repos\lab2\obj\Debug\netcoreapp2.1\lab2.AssemblyInfo.cs
 D:\source\repos\lab2\obj\Debug\netcoreapp2.1\lab2.dll
 D:\source\repos\lab2\obj\Debug\netcoreapp2.1\lab2.pdb
+D:\source\repos\lab2\obj\Debug\netcoreapp2.1\lab2.genruntimeconfig.cache

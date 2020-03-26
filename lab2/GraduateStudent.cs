@@ -34,7 +34,8 @@ namespace lab2
         }
         public Article[] Articles
         {
-            get; set;
+            get { return articles; }
+            set { }
         }
         public GraduateStudent(Person student, Person supervisor, string speciality, FormOfStudy form, int learningYear)
         {
@@ -51,6 +52,10 @@ namespace lab2
             Speciality = "Software engineering";
             Form = 0;
             LearningYear = 2020;
+        }
+        public Article LastArticle
+        {
+            get { return Articles[Articles.Length-1]; }
         }
     }
 }

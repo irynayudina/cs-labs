@@ -51,7 +51,7 @@ namespace lab2
         }
         override public string ToString()
         {
-            return ($"Information about subject:\n Name: {this.Name}\n Last Name: {LastName}\n" +
+            return ($"Information about subject:\n Name: {Name}\n Last Name: {LastName}\n" +
                 $" Date of birthday: {Birthday}\n" +
                 $" Age: {((DateTime.Today).Subtract(Birthday)).Days / 365} or {Age()}");
         }

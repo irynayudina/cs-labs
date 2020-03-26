@@ -18,7 +18,7 @@ namespace lab2
             //for test {
             GraduateStudent s = new GraduateStudent();
             s.Student.Name = "x";
-            
+         //   Console.WriteLine(s.Articles.ToString());
             Article a = new Article();
             Console.WriteLine(a.ToString());
             Person human = new Person();
@@ -39,11 +39,13 @@ namespace lab2
             Person[,] arr2dimention = new Person[m, n];
             Person[][] arrStepped = new Person[m][];
             Create2dstepped(m, n, arrStepped);
-            for(int i =0; i<m; i++)
+            int sssssum = 0;///testing sum of all elements of stepped array
+            for (int i =0; i<m; i++)
             {
                 Console.WriteLine($"arrStepped[{i}][{arrStepped[i].Length}]");
+                sssssum += arrStepped[i].Length;
             }
-
+            Console.WriteLine($" sum of elements of stepped array{ sssssum}");
             for(int i = 0; i < arr1dimention.Length; i++)
             {
                 arr1dimention[i] = new Person();
@@ -105,10 +107,11 @@ namespace lab2
         private static void Create2dstepped(int m, int n, Person[][] arrStepped)
         {
             Random rand = new Random();
+            int sum = m * n - 1;//чтобы убедиться что ддлинна последнего массива хотя-бы 1
+            int sumremain = sum;
             for (int i = 0; i < arrStepped.Length; i++)
             {
-                int sum = m * n-1;
-                int sumremain = sum;
+                sumremain = sum;
                 for (int k = 0; k < i; k++)
                 {
                     sumremain = sumremain - arrStepped[k].Length;
@@ -117,7 +120,7 @@ namespace lab2
                         sumremain = 0;
                     }
                 }
-                int r = sumremain > 0 ? rand.Next(1, sumremain/2) : 0;
+                int r = sumremain/(m/2) > 1 ? rand.Next(1, sumremain / (m / 2)) : 1;//деление m/2 обеспечивает болеее мелкие рандомные числа
                 arrStepped[i] = new Person[r];
                 arrStepped[arrStepped.Length - 1] = new Person[1+sumremain];
             }
