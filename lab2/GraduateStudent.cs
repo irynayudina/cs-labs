@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace lab2
 {
@@ -14,28 +15,44 @@ namespace lab2
         private Article[] articles;
         public Person Student
         {
-            get;set;
+            get { return student; }
+            set { student = value; }
         }
         public Person Supervisor
         {
-            get; set;
+            get { return supervisor; }
+            set { supervisor = value; }
         }
         public string Speciality
         {
-            get; set;
+            get { return speciality; }
+            set { speciality = value; }
         }
         public FormOfStudy Form
         {
-            get; set;
+            get { return form; }
+            set { form = value; }
         }
         public int LearningYear
         {
-            get; set;
+            get { return learningYear; }
+            set { learningYear = value; }
         }
         public Article[] Articles
         {
             get { return articles; }
-            set { }
+            set { articles = value; }
+        }
+        public Article LastArticle
+        {
+            get {
+                if (Articles[Articles.Length - 1] != null)
+                {
+                    Articles.OrderBy(a => a.Date).ToArray();
+                    return (Articles[Articles.Length - 1]);
+                }
+                else { return null; }
+                }
         }
         public GraduateStudent(Person student, Person supervisor, string speciality, FormOfStudy form, int learningYear)
         {
@@ -44,6 +61,7 @@ namespace lab2
             Speciality = speciality;
             Form = form;
             LearningYear = learningYear;
+            Articles = new Article[0];
         }
         public GraduateStudent()
         {
@@ -52,10 +70,25 @@ namespace lab2
             Speciality = "Software engineering";
             Form = 0;
             LearningYear = 2020;
+            Articles = new Article[0];
         }
-        public Article LastArticle
+        /*public void AddArticles(Article[] articles, Article[] NewArticles)
         {
-            get { return Articles[Articles.Length-1]; }
+            Array.Resize(ref articles, articles.Length+NewArticles.Length);
+            for(int i = articles.Length-NewArticles.Length; i < articles.Length; i++)
+            {
+                articles[i] = NewArticles[i - articles.Length + NewArticles.Length];
+            }
+            Console.WriteLine($"resized article has length: {articles.Length}");
+        }*/
+        public void AddArticles(params Article[] p)
+        {
+            int initialLength = this.articles.Length;
+            Array.Resize(ref this.articles, this.articles.Length + p.Length);
+            for(int i = this.articles.Length - initialLength; i<this.articles.Length; i++)
+            {
+                this.articles[i] = p[i-p.Length];
+            }
         }
     }
 }

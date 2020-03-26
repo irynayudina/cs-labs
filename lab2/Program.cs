@@ -18,9 +18,12 @@ namespace lab2
             //for test {
             GraduateStudent s = new GraduateStudent();
             s.Student.Name = "x";
-         //   Console.WriteLine(s.Articles.ToString());
+            s.AddArticles(new Article());
+            Console.WriteLine($"resized article has length: {s.Articles.Length}");
+            //   Console.WriteLine(s.Articles.ToString());
             Article a = new Article();
             Console.WriteLine(a.ToString());
+            Console.WriteLine($"amount of articles: {s.Articles.Length}");
             Person human = new Person();
             Console.WriteLine(human.ToString());
             human.ChangeBirthday = 1999;
