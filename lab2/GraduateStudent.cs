@@ -62,6 +62,7 @@ namespace lab2
             Form = form;
             LearningYear = learningYear;
             Articles = new Article[0];
+            this.articles = new Article[0];
         }
         public GraduateStudent()
         {
@@ -71,24 +72,30 @@ namespace lab2
             Form = 0;
             LearningYear = 2020;
             Articles = new Article[0];
+            this.articles = new Article[0];
+        }       
+         public void AddArticles(params Article[] p)
+         {
+             int initialLength = this.articles.Length;
+             Array.Resize(ref this.articles, this.articles.Length + p.Length);
+            //p.CopyTo(this.articles, initialLength-1);
+             for(int i = initialLength; i<this.articles.Length; i++)
+             {
+                 this.articles[i] = p[i-initialLength];
+             }
+         }
+        public override string ToString()
+        {
+            string allInfo = ($"Student: {Student.ToString()}, Supervisor: {Supervisor.ToString()}," +
+                $" Speciality: {Speciality}, FormOfstudy: {Form}," +
+                $"LearningYear: {LearningYear}, Articles: ");
+            foreach (Article i in this.articles) { allInfo += i.ToString(); }
+            return allInfo;
         }
-        /*public void AddArticles(Article[] articles, Article[] NewArticles)
+        public virtual string ToShortString()
         {
-            Array.Resize(ref articles, articles.Length+NewArticles.Length);
-            for(int i = articles.Length-NewArticles.Length; i < articles.Length; i++)
-            {
-                articles[i] = NewArticles[i - articles.Length + NewArticles.Length];
-            }
-            Console.WriteLine($"resized article has length: {articles.Length}");
-        }*/
-        public void AddArticles(params Article[] p)
-        {
-            int initialLength = this.articles.Length;
-            Array.Resize(ref this.articles, this.articles.Length + p.Length);
-            for(int i = this.articles.Length - initialLength; i<this.articles.Length; i++)
-            {
-                this.articles[i] = p[i-p.Length];
-            }
+            return ($"Student {Student}, Supervisor {Supervisor}, Speciality {Speciality}, FormOfstudy {Form}," +
+                $"LearningYear {LearningYear}");
         }
     }
 }

@@ -18,9 +18,9 @@ namespace lab2
             //for test {
             GraduateStudent s = new GraduateStudent();
             s.Student.Name = "x";
-            s.AddArticles(new Article());
+            s.AddArticles(new Article(), new Article());
             Console.WriteLine($"resized article has length: {s.Articles.Length}");
-            //   Console.WriteLine(s.Articles.ToString());
+            Console.WriteLine(s.ToString());
             Article a = new Article();
             Console.WriteLine(a.ToString());
             Console.WriteLine($"amount of articles: {s.Articles.Length}");
@@ -32,12 +32,9 @@ namespace lab2
             int m, n;
             Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
             string inp = Console.ReadLine();
-            //safe entering
-            //m = EnterPositiveInt();
-            //n = EnterPositiveInt();
             string[] mn = inp.Split(new Char[] { ' ', ',', '.', ':', '\t' });
-            m = Convert.ToInt32(mn[0]);
-            n = Convert.ToInt32(mn[1]);
+            m = EnterPositiveInt(mn[0]);
+            n = EnterPositiveInt(mn[1]);
             Person[] arr1dimention = new Person[m * n];
             Person[,] arr2dimention = new Person[m, n];
             Person[][] arrStepped = new Person[m][];
@@ -102,10 +99,7 @@ namespace lab2
             Console.WriteLine("RunTime of 1 dimentional array " + ts1d);
             Console.WriteLine("RunTime of 2 dimentional array " + ts2d);
             Console.WriteLine("RunTimes of stepped array" + tss);
-            ////////////////////individual tasks variant 6
-            
-
-        }
+    }
 
         private static void Create2dstepped(int m, int n, Person[][] arrStepped)
         {
@@ -123,12 +117,12 @@ namespace lab2
                         sumremain = 0;
                     }
                 }
-                int r = sumremain/(m/2) > 1 ? rand.Next(1, sumremain / (m / 2)) : 1;//деление m/2 обеспечивает болеее мелкие рандомные числа
+                int d = (m / 2) == 0 ? 1 : m / 2 ;
+                int r = sumremain/d > 1 ? rand.Next(1, sumremain / d) : 1;//деление m/2 обеспечивает болеее мелкие рандомные числа
                 arrStepped[i] = new Person[r];
                 arrStepped[arrStepped.Length - 1] = new Person[1+sumremain];
             }
         }
-        //unused function
         private static int EnterPositiveInt()
         {
             int m = -1;
@@ -138,7 +132,16 @@ namespace lab2
                 Console.Write("Введите целое положительное число ");
                 tmp = Console.ReadLine();
             }
-
+            return m;
+        }
+        static int EnterPositiveInt(string tmp)
+        {
+            int m = -1;
+            while (!(int.TryParse(tmp, out m)) || m < 1)
+            {
+                Console.Write("Введите целое положительное число ");
+                tmp = Console.ReadLine();
+            }
             return m;
         }
 }
