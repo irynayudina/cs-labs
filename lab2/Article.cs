@@ -23,7 +23,7 @@ namespace lab2
         }
         public override string ToString()
         {
-            return ($"Information about article:\n Name: {Name}\n" +
+            return ($"\nInformation about article:\n Name: {Name}\n" +
                 $" Date of publishing: {Date}\n" +
                 $" Place of publishing: {Place}");
         }

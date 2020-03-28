@@ -48,8 +48,8 @@ namespace lab2
             get {
                 if (Articles[Articles.Length - 1] != null)
                 {
-                    Articles.OrderBy(a => a.Date).ToArray();
-                    return (Articles[Articles.Length - 1]);
+                    Article[] ar = Articles.OrderBy(a => a.Date).ToArray();
+                    return (ar[Articles.Length - 1]);
                 }
                 else { return null; }
                 }
@@ -70,7 +70,7 @@ namespace lab2
             Supervisor = new Person();
             Speciality = "Software engineering";
             Form = 0;
-            LearningYear = 2020;
+            LearningYear = 2024;
             Articles = new Article[0];
             this.articles = new Article[0];
         }       
@@ -86,16 +86,17 @@ namespace lab2
          }
         public override string ToString()
         {
-            string allInfo = ($"Student: {Student.ToString()}, Supervisor: {Supervisor.ToString()}," +
-                $" Speciality: {Speciality}, FormOfstudy: {Form}," +
-                $"LearningYear: {LearningYear}, Articles: ");
+            string allInfo = ($"Information about Graduete Student\n\nStudent: {Student.ToString()}\n\n Supervisor: {Supervisor.ToString()}\n\n" +
+                $" Speciality: {Speciality}\n FormOfstudy: {Form}\n" +
+                $"LearningYear: {LearningYear}\n Articles:\n ");
             foreach (Article i in this.articles) { allInfo += i.ToString(); }
             return allInfo;
         }
         public virtual string ToShortString()
         {
-            return ($"Student {Student}, Supervisor {Supervisor}, Speciality {Speciality}, FormOfstudy {Form}," +
-                $"LearningYear {LearningYear}");
+            return ($"Information about Graduete Student\n\nStudent: {Student.ToString()}\n\n Supervisor: {Supervisor.ToString()}\n\n" +
+                $" Speciality: {Speciality}\n FormOfstudy: {Form}\n" +
+                $"LearningYear: {LearningYear}");
         }
     }
 }

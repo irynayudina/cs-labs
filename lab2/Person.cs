@@ -30,6 +30,7 @@ namespace lab2
             int bYear, nYear;
             bYear = Birthday.Year;
             nYear = DateTime.Today.Year;
+            //((DateTime.Today).Subtract(Birthday)).Days / 365
             return (nYear - bYear);
         }
         public int ChangeBirthday
@@ -51,9 +52,8 @@ namespace lab2
         }
         override public string ToString()
         {
-            return ($"Information about subject:\n Name: {Name}\n Last Name: {LastName}\n" +
-                $" Date of birthday: {Birthday}\n" +
-                $" Age: {((DateTime.Today).Subtract(Birthday)).Days / 365} or {Age()}");
+            return ($"\nInformation about subject:\n Name: {Name}\n Last Name: {LastName}\n" +
+                $" Date of birthday: {Birthday}\n");
         }
         public virtual string ToShortString()
         {
